@@ -1,2 +1,2 @@
 # WordPicker
-Training project for Android (Kotlin)
+Learning project for Android (Kotlin)
