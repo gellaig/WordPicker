@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <Button
+        android:id="@+id/endButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="114dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="52dp"
+        android:background="@color/colorButton"
+        android:text="@string/end_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/timerBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="343dp"
+        android:layout_height="52dp"
+        android:max="100"
+        android:progress="100"
+        app:layout_constraintBottom_toTopOf="@+id/endButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/scoreText"
+        android:layout_width="72dp"
+        android:layout_height="37dp"
+        android:text="@string/score_text"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/gameTable"
+        app:layout_constraintEnd_toStartOf="@+id/scoreNumber"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.24000001" />
+
+    <TextView
+        android:id="@+id/scoreNumber"
+        android:layout_width="277dp"
+        android:layout_height="37dp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/gameTable"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/scoreText"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:id="@+id/gameTable"
+        android:layout_width="409dp"
+        android:layout_height="303dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/timerBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreText"
+        app:layout_constraintVertical_bias="0.120000005">
+
+        <TableRow
+            android:id="@+id/gameRow0"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ToggleButton
+                android:id="@+id/wordButton00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="75dp" />
+
+            <ToggleButton
+                android:id="@+id/wordButton01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="75dp" />
+
+            <ToggleButton
+                android:id="@+id/wordButton02"
+                android:layout_width="87dp"
+                android:layout_height="match_parent"
+                android:minWidth="75dp"
+                android:minHeight="75dp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/gameRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ToggleButton
+                android:id="@+id/wordButton10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="75dp" />
+
+            <ToggleButton
+                android:id="@+id/wordButton11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="75dp" />
+
+            <ToggleButton
+                android:id="@+id/wordButton12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="75dp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/gameRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ToggleButton
+                android:id="@+id/wordButton20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="75dp" />
+
+            <ToggleButton
+                android:id="@+id/wordButton21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="75dp" />
+
+            <ToggleButton
+                android:id="@+id/wordButton22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="75dp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/gameRow3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ToggleButton
+                android:id="@+id/wordButton30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="75dp" />
+
+            <ToggleButton
+                android:id="@+id/wordButton31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="75dp" />
+
+            <ToggleButton
+                android:id="@+id/wordButton32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="75dp" />
+        </TableRow>
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

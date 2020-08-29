@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">WordPicker</string>
+    <string name="start_button">Start</string>
+    <string name="end_button">End</string>
+    <string name="difficulty_text_default">Easy</string>
+    <string name="main_text">Word Picker</string>
+    <string name="score_text">Score:</string>
+</resources>
