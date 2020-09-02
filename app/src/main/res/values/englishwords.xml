@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="english_words">
-        <item>"A"</item>
         <item>"ABANDON"</item>
         <item>"ABILITY"</item>
         <item>"ABLE"</item>
@@ -1312,7 +1311,6 @@
         <item>"HURT"</item>
         <item>"HUSBAND"</item>
         <item>"HYPOTHESIS"</item>
-        <item>"I"</item>
         <item>"ICE"</item>
         <item>"IDEA"</item>
         <item>"IDEAL"</item>

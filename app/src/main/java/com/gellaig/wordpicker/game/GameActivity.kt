@@ -53,44 +53,53 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun drawLetterButtons(init: Boolean = false) {
-        fun isNewRowNeeded(i: Int) = i % 4 == 0
+        fun isRowNotFull(i: Int) = i - 4 < 0
 
-        val currentTableSize = getLetterButtons().count()
-        // println("currentTableSize:$currentTableSize")
+        val currentButtons = getLetterButtons()
+        val randomLetters = fillRandomLetters(init, currentButtons.count()).toCharArray()
 
-        val randomLetters = fillRandomLetters(init, currentTableSize).toCharArray()
-
-        if (currentTableSize + randomLetters.size <= MAX_LETTER_BUTTONS_NUMBER )
-            for ((i, letter) in randomLetters.withIndex()) {
-                val currentRow = if (isNewRowNeeded(i)) TableRow(this) else gameTable.children.last() as TableRow
-
-                currentRow.apply {
-                    gravity = Gravity.CENTER
-                    addView(createToggleButton(letterButtonIndex++, letter.toString()))
-                }
-
-                if (isNewRowNeeded(i)) gameTable.addView(currentRow)
+        if (currentButtons.count() + randomLetters.size <= MAX_LETTER_BUTTONS_NUMBER )
+            for (letter in randomLetters) {
+                addToggleButton(createToggleButton(letterButtonIndex++, letter.toString()))
             }
 
-        shuffleLetterButtons()
+        if (!init) shuffleLetterButtons()
+    }
+
+    private fun addToggleButton(toggleButton: ToggleButton) {
+        fun isRowNotFull(i: Int) = i - 4 < 0
+
+        var currentRow = gameTable.children.map { it as TableRow }.firstOrNull { isRowNotFull(it.childCount)  } ?: TableRow(this)
+
+        currentRow.apply {
+            gravity = Gravity.CENTER
+            addView(toggleButton)
+        }
+
+        if (currentRow.childCount == 1) gameTable.addView(currentRow)
     }
 
     private fun shuffleLetterButtons() {
-        gameTable.children
-            .map { it as TableRow }
-            .forEach {
-                it.children.toMutableList().shuffle()
+        val shuffledButtons = getLetterButtons().toMutableList()
+        shuffledButtons.shuffle()
 
-            }
+        clearGameTable()
 
-        gameTable.children.toMutableList().shuffle()
+        shuffledButtons.forEach {
+            addToggleButton(it)
+        }
+    }
+
+    private fun clearGameTable() {
+        gameTable.children.map { it as TableRow }.forEach { it.removeAllViews() }
+        gameTable.removeAllViews()
     }
 
     private fun checkSelectedButtons() {
         val pressedLetterButtons = getLetterButtons().filter { it.isChecked}
         val currentWord = currentSelectedLetters.map { it.value }.joinToString("")
 
-        println("currentWord: $currentWord")
+        // println("currentWord: $currentWord")
 
         if (words.any { it == currentWord && currentWord !in foundWords}) {
             handleWordFound(pressedLetterButtons, currentWord)
@@ -98,9 +107,9 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
-    private fun getLetterButtons() = gameTable.children.map { it as TableRow }.flatMap { it.children.map { it as ToggleButton } }.toMutableList()
+    private fun getLetterButtons() = gameTable.children.map { it as TableRow }.flatMap { it.children.map { it as ToggleButton } }
 
-    private fun handleWordFound(buttons: List<ToggleButton>, currentWord: String) {
+    private fun handleWordFound(buttons: Sequence<ToggleButton>, currentWord: String) {
         timer.restart()
         foundWords.add(currentWord)
         increaseScore(currentSelectedLetters.size)
