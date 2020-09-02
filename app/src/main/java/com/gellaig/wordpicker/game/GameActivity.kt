@@ -41,7 +41,7 @@ class GameActivity : AppCompatActivity() {
 
     private fun fillRandomLetters(init: Boolean, currentTableSize: Int): String {
         var randomWords = ""
-        if (init) randomWords = getRandomWord(1..2) + getRandomWord(1..2) + getRandomWord(2..3) + getRandomWord(2..3)
+        if (init) randomWords = getRandomWord(1..2)  + getRandomWord(2..3)
 
         var maxLength = MAX_LETTER_BUTTONS_NUMBER - (currentTableSize + randomWords.length)
         while (maxLength > 1) {
